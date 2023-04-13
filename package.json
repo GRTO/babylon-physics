@@ -21,8 +21,14 @@
   "author": "Gerson Toribio",
   "license": "ISC",
   "dependencies": {
+    "@babylonjs/core": "^5.55.0",
+    "@babylonjs/gui": "^5.55.0",
+    "@types/cannon": "^0.1.8",
     "@types/react": "^18.0.14",
+    "babylonjs-hook": "^0.1.1",
+    "cannon": "^0.6.2",
     "react": "^18.2.0",
+    "react-babylonjs": "^3.1.15",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
