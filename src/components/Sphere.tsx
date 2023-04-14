@@ -37,7 +37,7 @@ export const Sphere: FC<SphereProps> = ({ position, name, color }) => {
 
 	return (
 		<sphere ref={sphereRef} name={`${name}-sphere`} diameter={2} segments={16} position={position}>
-			<physicsImpostor type={PhysicsImpostor.SphereImpostor} _options={{ mass: 1, restitution: 0.9 }} />
+			<physicsImpostor type={PhysicsImpostor.SphereImpostor} _options={{ mass: 1 + Math.random() * 3, restitution: 0.9, friction: 2 }} />
 			<standardMaterial name={`${name}-material`} specularPower={16}
 				diffuseColor={Color3.Black()}
 				emissiveColor={color}

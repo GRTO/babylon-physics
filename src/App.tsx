@@ -12,6 +12,7 @@ import * as CANNON from 'cannon';
 import { Sphere } from "./components/Sphere";
 
 import './app.scss';
+import { Coin } from './components/Coin';
 
 window.CANNON = CANNON;
 
@@ -27,7 +28,7 @@ const App: FC = () => {
         <Scene enablePhysics={[gravityVector, new CannonJSPlugin()]}>
           <arcRotateCamera name="arc" target={new Vector3(0, 1, 0)}
             alpha={-Math.PI / 2} beta={(0.2 + (Math.PI / 4))} wheelPrecision={50}
-            radius={14} minZ={0.001} lowerRadiusLimit={8} upperRadiusLimit={20} upperBetaLimit={Math.PI / 2} />
+            radius={17} minZ={0.001} lowerRadiusLimit={8} upperRadiusLimit={20} upperBetaLimit={Math.PI / 2} />
             <hemisphericLight name='hemi' direction={new Vector3(0, -1, 0)} intensity={0.8} />
 
             <directionalLight name="shadow-light" setDirectionToTarget={[Vector3.Zero()]} direction={Vector3.Zero()} position={new Vector3(-40, 30, -40)}
@@ -36,10 +37,15 @@ const App: FC = () => {
                 {Array.from(new Array(NUMBER_OF_BOXES), (_, index) => index).map(x => (
                   <Sphere
                     name={x.toFixed()}
-                    position={new Vector3(Math.cos(2 * Math.PI / NUMBER_OF_BOXES * x) * RADIUS, 3, Math.sin(2 * Math.PI / NUMBER_OF_BOXES * x) * RADIUS)}
+                    position={new Vector3(Math.cos(2 * Math.PI / NUMBER_OF_BOXES * x) * RADIUS, 3 + Math.random() * 3, Math.sin(2 * Math.PI / NUMBER_OF_BOXES * x) * RADIUS)}
                     color={new Color3(Math.abs(x -(NUMBER_OF_BOXES/2)) / 10, Math.abs(x -(NUMBER_OF_BOXES/2)) / 10, Math.abs(x -(NUMBER_OF_BOXES/2)) / 10)}
                   />
                 ))}
+                <Coin
+                  color={new Color3(0, 0, 255)}
+                  name="Coin"
+                  position={new Vector3(0, 5, 10)}
+                />
               </shadowGenerator>
             </directionalLight>
 
